@@ -1,0 +1,22 @@
+<p-splitter [style]="{height:'100%'}" [panelSizes]="[20, 80]"> <!-- [style]="{ height: '100%' }" -->
+  <ng-template #panel>
+    <div class="w-full h-full">
+      <h1>Hello</h1>
+    </div>
+  </ng-template>
+  <ng-template #panel>
+    <p-tabs class="w-full h-full" value="tab1">
+      <p-tablist>
+        <p-tab *ngFor="let tab of tabs" [value]="tab.title">
+          {{tab.title}}
+        </p-tab>
+      </p-tablist>
+      <p-tabpanels class="h-full">
+        <p-tabpanel class="h-full" value="tab1">
+          <div class="h-full" style="background-color: blue;">
+          </div>
+        </p-tabpanel>
+      </p-tabpanels>
+    </p-tabs>
+  </ng-template>
+</p-splitter>
