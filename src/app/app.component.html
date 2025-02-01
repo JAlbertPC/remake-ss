@@ -1,14 +1,78 @@
-<p-splitter [style]="{height:'100%'}" [panelSizes]="[20, 80]"> <!-- [style]="{ height: '100%' }" -->
+<p-splitter [panelSizes]="[40, 60]" [style]="{height:'100%'}"> <!-- [style]="{ height: '100%' }" -->
   <ng-template #panel>
-    <div class="w-full h-full">
-      <h1>Hello</h1>
+    <div class="w-full h-full" style="padding: 1rem">
+      <div class="selectors">
+        <h1>Buscador de proyectos</h1>
+        <div class="plazo">
+          <p>
+            Plazo
+          </p>
+          <p-select (onChange)="seeSelected($event)" [options]="periodos" class="w-full"
+                    placeholder="Seleccione un periodo"
+                    size="small">
+            <ng-template #selectedItem let-periodo>
+              <div *ngIf="periodo">
+                <p class="m-0">{{ periodo.iniPeriodo | date }} - {{ periodo.finPeriodo | date }}</p>
+              </div>
+            </ng-template>
+            <ng-template #item let-periodo>
+              <div>
+                <p class="m-0">{{ periodo.iniPeriodo | date }} - {{ periodo.finPeriodo | date }}</p>
+              </div>
+            </ng-template>
+          </p-select>
+        </div>
+        <div class="centro-docente">
+          <p>
+            Centro docente
+          </p>
+          <p-select (onChange)="seeSelected($event)" [options]="centrosDocentes" class="w-full"
+                    placeholder="Seleccione un centro docente"
+                    size="small">
+            <ng-template #selectedItem let-centroDocente>
+              <div *ngIf="centroDocente">
+                <p class="m-0">{{ centroDocente.nombre }}</p>
+              </div>
+            </ng-template>
+            <ng-template #item let-centroDocente>
+              <div>
+                <p class="m-0">{{ centroDocente.nombre }}</p>
+              </div>
+            </ng-template>
+          </p-select>
+        </div>
+        <div class="programa-educativo">
+          <p>
+            Programa educativo
+          </p>
+          <p-select (onChange)="seeSelected($event)" [options]="periodos" class="w-full"
+                    placeholder="Seleccione un periodo"
+                    size="small">
+            <ng-template #selectedItem let-periodo>
+              <div *ngIf="periodo">
+                <p class="m-0">{{ periodo.iniPeriodo | date }} - {{ periodo.finPeriodo | date }}</p>
+              </div>
+            </ng-template>
+            <ng-template #item let-periodo>
+              <div>
+                <p class="m-0">{{ periodo.iniPeriodo | date }} - {{ periodo.finPeriodo | date }}</p>
+              </div>
+            </ng-template>
+          </p-select>
+        </div>
+      </div>
+      <p-divider/>
+      <div class="social-services">
+        <h1>Servicios sociales</h1>
+      </div>
+
     </div>
   </ng-template>
   <ng-template #panel>
     <p-tabs class="w-full h-full" value="tab1">
       <p-tablist>
         <p-tab *ngFor="let tab of tabs" [value]="tab.title">
-          {{tab.title}}
+          {{ tab.title }}
         </p-tab>
       </p-tablist>
       <p-tabpanels class="h-full">
